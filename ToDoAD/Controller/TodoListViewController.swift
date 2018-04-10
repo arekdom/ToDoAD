@@ -149,7 +149,12 @@ class TodoListViewController: UITableViewController {
                 request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
        
                 loadItems(with: request)
-                
+            }
+            
+            
+            
+            
+            
                 
 // above is replacaement of below we just use leadItems and with request going to loadItem func
 //                do {
@@ -160,10 +165,22 @@ class TodoListViewController: UITableViewController {
 //
 //                }
 //                tableView.reloadData()
+            
+            
+            func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+                if searchBar.text?.count == 0 {
+                    loadItems()
+                    
+                    DispatchQueue.main.async {
+                    searchBar.resignFirstResponder()
+                    
+                }
+            
+            
             }
         }
 
-
+}
 
 
 
